@@ -1,24 +1,22 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import './App.css'
-import AddNote from './views/AddNote/AddNote'
-import Home from './views/Home/Home'
+import "./App.css";
+import AddNote from "./views/AddNote/AddNote";
+import Home from "./views/Home/Home";
 
 function App() {
-
-
   return (
-  <>
-<BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add-note" element={<AddNote />} />
 
-<Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/add-note" element={<AddNote />} />
-</Routes>
-</BrowserRouter>
-  </>
-  )
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
