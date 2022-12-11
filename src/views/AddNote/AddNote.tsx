@@ -12,7 +12,7 @@ function AddNote() {
             <div className="card">
               <div className="card-header bg-primary">
                 <h3 className="text-dark">Add Note</h3>
-              </div>
+              </div> 
               <div className="card-body">
                 <form>
                   <div className="form-group">

@@ -1,0 +1,23 @@
+.card-note{
+border: 1px solid #000;
+border-radius: 5px;
+width: 300px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 2px;
+}
+
+
+.note-title{
+font-size: 20px;
+margin: 0;
+}
+
+.note-description{
+font-size: 15px;
+margin: 0;
+
+}
+
