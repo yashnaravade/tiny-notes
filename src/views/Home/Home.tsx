@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import swal from "sweetalert";
 import "./Home.css";
 // import Navbar from '../../components/Navbar/Navbar'
@@ -11,9 +11,21 @@ function Home() {
       description: "This is note 1",
     },
   ]);
-
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
+
+  useEffect(() => {
+    const notes = localStorage.getItem("notes");
+    if (notes) {
+      setNotes(JSON.parse(notes));
+    }
+  }, []);
+
+  useEffect(() => {
+    if(notes.length > 1) {
+    localStorage.setItem("notes", JSON.stringify(notes));
+    }
+  }, [notes]);
 
   function addNote() {
     //  const tempNotes = [...notes]
@@ -23,6 +35,14 @@ function Home() {
     //   })
     // setNotes(tempNotes)
     swal("Note Added!", "Your note has been added!", "success");
+
+    if (title === "" || description === "") {
+      swal("Error!", "Please fill all the fields!", "error");
+      return;
+    }
+
+
+
     setNotes([
 
       ...notes,
@@ -45,8 +65,8 @@ function Home() {
       <div className="row">
         <div className="col-6">
           <div className="notes-container">
-            {notes.map((note) => {
-              return <Note title={note.title} description={note.description} />;
+            {notes.map((note, index) => {
+              return <Note title={note.title} description={note.description} noteIndex={index} />;
             })}
           </div>
         </div>
@@ -94,9 +114,6 @@ function Home() {
 }
 
 export default Home;
-function parseString(value: string): React.SetStateAction<string> {
-  throw new Error("Function not implemented.");
-}
 
 // late lecture
 // late homework
