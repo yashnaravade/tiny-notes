@@ -1,4 +1,5 @@
 import React from "react";
+import swal from "sweetalert";
 import "./Home.css";
 // import Navbar from '../../components/Navbar/Navbar'
 import Note from "../../components/Note/Note";
@@ -15,24 +16,24 @@ function Home() {
   const [description, setDescription] = React.useState("");
 
   function addNote() {
-     
     //  const tempNotes = [...notes]
     //   tempNotes.push({
     //       title: title,
     //       description: description
     //   })
-      // setNotes(tempNotes)
+    // setNotes(tempNotes)
+    swal("Note Added!", "Your note has been added!", "success");
+    setNotes([
 
-      setNotes([...notes, {
+      ...notes,
+      {
         title: title,
-        description: description
-      }])
+        description: description,
+      },
+    ]);
 
-      setTitle("")
-      setDescription("")
-
-      
-  
+    setTitle("");
+    setDescription("");
   }
 
   return (
@@ -76,7 +77,13 @@ function Home() {
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
-                <button type="button" className="btn btn-primary mt-4" onClick={addNote}>Add Note</button>
+                <button
+                  type="button"
+                  className="btn btn-primary mt-4"
+                  onClick={addNote}
+                >
+                  Add Note
+                </button>
               </form>
             </div>
           </div>
